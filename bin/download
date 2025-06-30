@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+current_script_path=${BASH_SOURCE[0]}
+plugin_dir=$(dirname "$(dirname "$current_script_path")")
+
+download_zls() {
+  local download_path="$1"
+  local version="$2"
+  local release_file="${download_path}/${version}.tar.xz"
+  mkdir -p "$download_path"
+
+  "${plugin_dir}/lib/utils.py" download "${version}" "${release_file}"
+  tar -xf "$release_file" -C "$download_path"
+  rm "$release_file"
+}
+
+
+download_zls "$ASDF_DOWNLOAD_PATH" "$ASDF_INSTALL_VERSION"
