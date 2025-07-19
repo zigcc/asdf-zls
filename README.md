@@ -29,7 +29,7 @@ asdf list all zls
 asdf install zls 0.14.1
 
 # Set a version globally (on your ~/.tool-versions file)
-asdf set --home zig 0.14.1
+asdf set --home zls 0.14.1
 
 # Now zls commands are available
 zls --version
